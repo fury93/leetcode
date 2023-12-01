@@ -8,9 +8,6 @@
 #         self.right = right
 class Solution:
     def getKthCharacter(self, root: Optional[object], k: int) -> str:
-        """
-        :type root: Optional[RopeTreeNode]
-        """
         def dfs(node, k):
             if node.len == 0: return node.val[k-1]
             leftLen = node.left.len or len(node.left.val) if node.left else 0
