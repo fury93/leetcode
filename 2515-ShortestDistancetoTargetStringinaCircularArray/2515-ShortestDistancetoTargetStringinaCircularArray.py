@@ -1,15 +1,10 @@
 [
 class Solution:
-    def closetTarget(self, words: List[str], target: str, 
-startIndex: int) -> int:
-        i, j, l = startIndex, startIndex, len(words)
-        for k in range(l//2 + 1):
-            i, j = startIndex - k, startIndex + k
-            if words[i % l] == target: return abs
-(startIndex - i)
-            if words[j % l] == target: return abs(j - 
-startIndex)
-
+    def closetTarget(self, words: List[str], target: str, start: int) -> int:
+        ln = len(words)
+        for k in range(ln//2 + 1):
+            l, r = start - k, start + k + 1
+            if words[l % ln] == target: return abs(start - l)
+            if words[r % ln] == target: return abs(r - start)
         return -1
-0
 5
