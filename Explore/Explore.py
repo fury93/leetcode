@@ -5,13 +5,12 @@
 #         self.left = left
 #         self.right = right
 class Solution:
-    def buildTree(self, preorder: List[int], inorder: List[int]) -> Optional
-[TreeNode]:
+    def buildTree(self, preorder: List[int], inorder: List[int]) -> Optional[TreeNode]:
         pos = {val: idx for idx, val in enumerate(inorder)}
         self.idx = 0
 
         def dfs(l, r):
-            if self.idx == len(preorder) or l > r: return None
+            if l > r: return None
             root = preorder[self.idx]
             self.idx += 1
             return TreeNode(
@@ -22,4 +21,5 @@ class Solution:
 
         return dfs(0, len(inorder) - 1)
 
-    def buildTree2(self, preorder: List[int], inorder: List[int]) -> Optional
+    def buildTree2(self, preorder: List[int], inorder: List[int]) -> Optional[TreeNode]:
+        if not inorder: return None
