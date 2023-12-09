@@ -1,25 +1,27 @@
-# Definition for a binary tree node.
-# class TreeNode:
-#     def __init__(self, val=0, left=None, right=None):
-#         self.val = val
-#         self.left = left
-#         self.right = right
+[
 class Solution:
-    def buildTree(self, preorder: List[int], inorder: List[int]) -> Optional[TreeNode]:
-        pos = {val: idx for idx, val in enumerate(inorder)}
-        self.idx = 0
+    # O(N^2)
+    def buildTree(self, inorder: List[int], postorder: List[int]) -> Optional
+[TreeNode]:
+        pos = {val: key for key, val in enumerate(inorder)}
 
         def dfs(l, r):
             if l > r: return None
-            root = preorder[self.idx]
-            self.idx += 1
-            return TreeNode(
-                root,
-                dfs(l, pos[root]-1),
-                dfs(pos[root] + 1, r)
-            )
+            root = TreeNode(postorder.pop())
+            root.right = dfs(pos[root.val]+1, r)
+            root.left = dfs(l, pos[root.val]-1)
+            return root
 
         return dfs(0, len(inorder) - 1)
+    
+    def buildTree2(self, inorder: List[int], postorder: List[int]) -> Optional
+[TreeNode]:
+        if not inorder or not postorder:
+            return None
+        
+        root = TreeNode(postorder.pop())
+        inorderIndex = inorder.index(root.val)
 
-    def buildTree2(self, preorder: List[int], inorder: List[int]) -> Optional[TreeNode]:
-        if not inorder: return None
+        root.right = self.buildTree(inorder[inorderIndex+1:], postorder)
+        root.left = self.buildTree(inorder[:inorderIndex], postorder)
+
