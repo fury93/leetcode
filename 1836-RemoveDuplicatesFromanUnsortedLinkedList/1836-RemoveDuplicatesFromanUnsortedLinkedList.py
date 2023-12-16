@@ -1,17 +1,17 @@
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, 
+next=None):
+#         self.val = val
 #         self.next = next
 class Solution:
-    def deleteDuplicates(self, head: Optional[ListNode]) 
--> Optional[ListNode]:
-        dummy = prev = ListNode(0, head)
-
-        while head:
-            if head.next and head.val == head.next.val:
-                while head.next and head.val == head.next.
-val:
-                    head = head.next
-                prev.next = head.next
-            else:
-                prev = head
-
-            head = head.next
+    def deleteDuplicatesUnsorted(self, 
+head: ListNode) -> ListNode:
+        dummy, d, cur = ListNode(0, head)
+, defaultdict(int), head
+        while cur:
+            d[cur.val] += 1
+            cur = cur.next
         
+        cur, prev = head, dummy
+        while cur:
