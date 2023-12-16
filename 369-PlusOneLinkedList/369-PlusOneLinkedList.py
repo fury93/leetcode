@@ -1,3 +1,4 @@
+[
 # class ListNode:
 #     def __init__(self, val=0, next=None):
 #         self.val = val
@@ -13,7 +14,7 @@ class Solution:
                     carry = 0
                 else:
                     node.val = 0
-                    carry = 0
+                    carry = 1
             return carry
         
         if add(head):
