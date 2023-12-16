@@ -1,13 +1,21 @@
 class Solution:
-    def findIntersectionValues(self, nums1: List
-[int], nums2: List[int]) -> List[int]:
-        s1, s2 = set(nums1), set(nums2)
+    def minTotalDistance(self, grid):
+        row_sum = list(map(sum, grid))
+        col_sum = list(map(sum, zip(*grid)))
 
-        cnt1, cnt2 = 0, 0
-        for n1 in nums1:
-            if n1 in s2: cnt1 += 1
-        for n2 in nums2:
-            if n2 in s1: cnt2 += 1
-                
-        return [cnt1, cnt2]
+        def minTotalDistance1D(vec):
+            i, j = -1, len(vec)
+            d = left = right = 0
+            while i != j:
+                if left < right:
+                    d += left
+                    i += 1
+                    left += vec[i]
+                else:
+                    d += right
+                    j -= 1
+                    right += vec[j]
+            return d
 
+        return minTotalDistance1D(row_sum) + minTotalDistance1D(col_sum)
+        
