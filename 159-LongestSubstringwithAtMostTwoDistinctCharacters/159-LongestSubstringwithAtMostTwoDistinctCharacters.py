@@ -1,4 +1,3 @@
-"
 class Solution:
     def lengthOfLongestSubstringTwoDistinct(self, s: str) -> int:
         res, pos, l = 0, defaultdict(int), 0
