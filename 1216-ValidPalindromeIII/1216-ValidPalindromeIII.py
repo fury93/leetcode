@@ -10,7 +10,7 @@ class Solution:
                 l, r = l + 1, r - 1
             else: return False
 
-        return swapsAllowed <= 2
+        return True
 
 
         
