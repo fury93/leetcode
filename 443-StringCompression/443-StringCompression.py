@@ -1,18 +1,22 @@
-[
-class Solution:
-    def compress(self, chars: List[str]) -> int:
-        i, j = 0, 0
+class RLEIterator:
 
-        while j < len(chars):
-            char, cnt = chars[j], 0
-            while j < len(chars) and chars[j] == char:
-                cnt += 1
-                j += 1
-            chars[i] = char
-            i += 1
-            if cnt > 1:
-                cnt_str = str(cnt)
-                start, i = i, i + len(cnt_str)
-                chars[start:i] = list(cnt_str)
+    def __init__(self, encoding: List[int]):
+        self.s = encoding
+        self.p = 0
 
-        return i
+    def next(self, n: int) -> int:
+        while n > 0 and self.p < len(self.s):
+            if self.s[self.p] >= n:
+                self.s[self.p] -= n
+                break
+            else:
+                n -= self.s[self.p]
+                self.p += 2
+        
+        return self.s[self.p+1] if self.p < len(self.s) else - 1
+        
+
+
+# Your RLEIterator object will be instantiated and called as such:
+# obj = RLEIterator(encoding)
+# param_1 = obj.next(n)
