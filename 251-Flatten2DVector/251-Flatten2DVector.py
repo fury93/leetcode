@@ -6,17 +6,11 @@ class Vector2D:
         self.inner = 0
 
     def __moveToNext(self):
-        while self.outer < len(self.vec) and len(self.vec[self.outer]) == 
-self.inner:
+        while self.outer < len(self.vec) and len
+(self.vec[self.outer]) == self.inner:
             self.outer += 1
             self.inner = 0
 
     def next(self) -> int:
-        self.__moveToNext()
-        val = self.vec[self.outer][self.inner]
-        self.inner += 1
-        return val
-        
-    def hasNext(self) -> bool:
-        self.__moveToNext()
-        return self.outer < len(self.vec)
+        if not self.hasNext():
+            raise StopIteration
