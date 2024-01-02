@@ -1,9 +1,9 @@
 class ZigzagIterator:
     def __init__(self, v1: List[int], v2: List[int]):
-        self.vectors = list(filter(None, [v1, v2]))
+        self.vectors = [v1, v2]
         self.q = deque()
-        for i in range(len(self.vectors)):
-            self.q.append((i, 0))
+        for i, v in enumerate(self.vectors):
+            if v: self.q.append((i, 0))
 
     def next(self) -> int:
         vector, pos = self.q.popleft()
