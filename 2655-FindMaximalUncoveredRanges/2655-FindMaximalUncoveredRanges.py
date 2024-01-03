@@ -6,12 +6,12 @@ class Solution:
         
         # sort by start and merge intervals
         ranges.sort()
-        merged_ranges = [ranges[0]]
-        for i in range(1, len(ranges)):
-            if merged_ranges[-1][1] >= ranges[i][0]:
-                merged_ranges[-1][1] = max(merged_ranges[-1][1], ranges[i][1])
+        merged_ranges = []
+        for start, end in ranges:
+            if merged_ranges and merged_ranges[-1][1] >= start:
+                merged_ranges[-1][1] = max(merged_ranges[-1][1], end)
             else:
-                merged_ranges.append(ranges[i])
+                merged_ranges.append([start, end])
           
         if merged_ranges[-1][1] != n:
             merged_ranges.append([n,n])
