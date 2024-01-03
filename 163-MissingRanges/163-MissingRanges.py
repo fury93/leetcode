@@ -19,9 +19,10 @@ class Solution:
             nums.append(upper+1)
         
         res = []
-        for start, end in zip(nums, nums[1:]):
+        for i in range(len(nums) - 1):
+            start, end = nums[i], nums[i+1]
             if start + 1 != end:
                 res.append([start+1, end-1])
         
-        return res
-
+        #for start, end in zip(nums, nums[1:]):
+        #    if start + 1 != end:
