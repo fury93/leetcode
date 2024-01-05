@@ -1,18 +1,11 @@
-2
 class Solution:
-    def mostBooked(self, n: int, meetings: List[List[int]]) -> 
-int:
-        booked, free = [], list(range(n))
-        meetings.sort()
-        freq = defaultdict(int)
-
-        for start, end in meetings:
-            while booked and booked[0][0] <= start:
-                _, room = heappop(booked)
-                heappush(free, room)
-            
-            if free:
-                room = heapq.heappop(free)
-                heappush(booked, [end, room])
+    def lengthOfLIS(self, nums: List[int]) -> int:
+        sub = []
+        for n in nums:
+            if len(sub) == 0 or sub[-1] < n:
+                sub.append(n)
             else:
-                release, room = heappop(booked)
+                pos = bisect_left(sub, n)
+                sub[pos] = n
+
+        return len(sub)
