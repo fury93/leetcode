@@ -1,11 +1,5 @@
 class Solution:
-    def halvesAreAlike(self, s: str) -> bool:
-        cnt, vowels = 0, set('a,e,i,o,u,A,E,I,O,U')
-        
-        for i in range(len(s)//2):
-            cnt += s[i] in vowels
-            cnt -= s[~i] in vowels
-        
-        return not cnt
-
+    def minimumBuckets(self, s: str) -> int:
+        return -1 if 'HHH' in s or s[:2] == 'HH' or s[-2:] == 'HH' or s == 'H' 
+else s.count('H') - s.count('H.H')
 "
