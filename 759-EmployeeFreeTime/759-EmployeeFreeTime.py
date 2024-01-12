@@ -1,20 +1,11 @@
-"""
-# Definition for an Interval.
-class Interval:
-    def __init__(self, start: int = None, end: int = None):
-        self.start = start
-        self.end = end
-"""
-from functools import reduce
-from operator import concat
 class Solution:
-    def employeeFreeTime(self, schedule: '[[Interval]]') -> '[Interval]':
-        schedule = sorted(reduce(concat, schedule, []), key = lambda s: s.start)
-        freeTime, freeStart = [], schedule[0].end
+    def getModifiedArray(self, length: int, updates: List[List[int]]) -> List[int]:
+        res = [0] * length
 
-        for i in range(1, len(schedule)):
-            time = schedule[i]
-            if time.start > freeStart:
-                freeTime.append(Interval(freeStart, time.start))
-            freeStart = max(freeStart, time.end)
-        return freeTime
+        for start, end, diff in updates:
+            res[start] += diff
+            if end+1 < length:
+                res[end+1] -= diff
+        
+        return list(accumulate(res))
+5
