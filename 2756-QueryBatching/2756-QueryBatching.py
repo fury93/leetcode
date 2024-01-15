@@ -1,23 +1,23 @@
-    }
-    // If the batcher is not available, stash the query for later processing
-    this.stashed.push({ key, resolve });
-  });
-};
-};
+ * @param {Array<number>} arr
+ * @param {number} startIndex
+ * @yields {number}
+ */
+function* cycleGenerator(arr, startIndex) {
+  let index = startIndex;
+  while (true) {
+    const jump = yield arr[index]
+    index = (index + arr.length + jump % arr.length) % arr.length;
+  }
 
-QueryBatcher.prototype.getValue = function(key) {
-  return new Promise((resolve) => {
-    if (this.isAvailable) {
-      this.isAvailable = false;
-      this.queryMultiple([key]).then(results => resolve(results[0]));
-      this.cooldown();  // Start the throttle time
-      return;
-var QueryBatcher = function(queryMultiple, t) {
-  this.queryMultiple = queryMultiple;
-  this.t = t;
-  this.isAvailable = true;  // Flag to indicate if the batcher can immediately process a 
-query
-  this.stashed = [];  // Temporary storage for queries arriving during a throttle time
-async function(keys) { return keys.map(key => key + '!'); }
-100
-[{"key": "a", "time": 10}, {"key": "b", "time": 20}, {"key": "c", "time": 30}]
+}
+
+/**
+ *  const gen = cycleGenerator([1,2,3,4,5], 0);
+ *  gen.next().value  // 1
+ *  gen.next(1).value // 2
+ *  gen.next(2).value // 4
+ *  gen.next(6).value // 5
+ */
+[1,2,3,4,5]
+[1,2,6]
+0
