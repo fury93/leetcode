@@ -1,14 +1,21 @@
 /**
- * @return {Object}
+ * @param {Function} fn
+ * @param {Array} args
+ * @param {number} t
+ * @return {Function}
  */
-var createInfiniteObject = function() {
-    return new Proxy({}, {
-};
+var cancellable = function(fn, args, t) {
+  let isCancelled = false;
+  setTimeout(() => {
 
 /**
- * const obj = createInfiniteObject();
-        get: (_, prop)=> () => prop
-    });
- * obj['abc123'](); // "abc123"
- */
-"
+ *  const result = [];
+      if(!isCancelled)
+          fn(...args);
+  }, t);
+
+  return () => {
+    isCancelled = true;
+  };
+};
+(
