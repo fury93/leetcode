@@ -1,12 +1,20 @@
 /**
- * @param {Promise} promise1
- * @param {Promise} promise2
- * @return {Promise}
+ * @param {Function} callback
+ * @param {Context} context
  */
-const addTwoPromises = async (p1, p2) => await p1 + await p2;
+Array.prototype.forEach = function(callback, context) {
+    for (let i = 0; i < this.length; i++) {
+        callback.call(context, this[i], i, this)
+    }
 
 /**
- * addTwoPromises(Promise.resolve(2), Promise.resolve(2))
- *   .then(console.log); // 4
+ *  const arr = [1,2,3];
+ *  const callback = (val, i, arr) => arr[i] = val * 2;
+ *  const context = {"context":true};
+ *
+ *  arr.forEach(callback, context)  
+ *
+ *  console.log(arr) // [2,4,6]
+}
  */
-n
+[
