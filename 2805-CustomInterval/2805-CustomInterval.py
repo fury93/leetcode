@@ -1,23 +1,23 @@
 
-      dfs();
+    const newObj = {};
+    let isEmpty = true
 
-      return customId;
-         }, delay + period * count);
-         count++;
-         intervalMap.set(customId, timerId);
+    for(const key in node) {
+      const subRes = dfs(node[key]);
+      if(subRes!== undefined) {
+        newObj[key] = subRes;
+        isEmpty = false
       }
-      function dfs() {
-         const timerId = setTimeout(() => {
-            fn();
-            dfs();
-   let intervalIdCounter = 0;
-   const intervalMap = new Map();
+    }
 
-   function setCustomInterval(fn, delay, period) {
-      let count = 0;
-      const customId = intervalIdCounter++;
+    if(isEmpty) return undefined;
 
-const CustomInterval = (() => {
-50
-20
-225
+    return newObj;
+  }
+
+  return dfs(obj);
+}
+
+[-5,-4,-3,-2,-1,0,1]
+(x) => x > 0
+{"a":1,"b":"2","c":3,"d":"4","e":5,"f":6,"g":{"a":1}}
