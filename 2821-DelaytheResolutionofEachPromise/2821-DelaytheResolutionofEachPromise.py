@@ -1,23 +1,21 @@
-      return new Promise((resolve, reject) => {
-        // Introduce the delay
-        setTimeout(() => {
-          el()
-            .then(res => {
-              resolve(res);
-            })
-            .catch(err => {
-              reject(err);
-            });
-        }, ms);
-      });
+ * @param {Object|Array} obj
+ * @return {Object}
+ */
+var invertObject = function(obj) {
+
+    var result = {}
+    for (const field in obj) {
+        const resultFieldValue = result[obj[field]]
+        if(!resultFieldValue) {
+            result[obj[field]] = field
+        } 
+        else if(typeof resultFieldValue === "string") {
+            result[obj[field]] = [result[obj[field]], field]
+        } 
+        else if (Array.isArray(resultFieldValue)) {
+            result[obj[field]].push(field)
+        }
     }
-
-    // Add the new function with the delay to the results
-  functions.forEach(el => {
-    const newFuncWithPromise = () => {
-  const newFunctions = [];
-
-function delayAll(functions, ms) {
-[() => new Promise((resolve) => setTimeout(resolve, 30))]
-50
-[() => new Promise((resolve) => setTimeout(resolve, 50)),() => new Promise((resolve) => setTimeout(resolve, 80))]
+    return result
+};
+{
