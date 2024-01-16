@@ -1,11 +1,9 @@
-class Solution:
-    def findMinArrowShots(self, points: List[List[int]]) -> int:
-        points.sort(key=lambda p: p[1])
-        res, prevEnd = 1, points[0][1]
-        
+        print(points)
         for start, end in points:
-            if start > prevEnd:
+            if start > groupEnd:
                 res += 1
-                prevEnd = end
+                groupEnd = end
+            else:
+                groupEnd = min(groupEnd, end)
         return res
 [
