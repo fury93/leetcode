@@ -7,9 +7,9 @@ class Solution:
             d[end][0] -= height
             d[end][1] -= 1
 
-        res, segmentHeight, segmentCnt, buildings = [], 0, 0, sorted(d.items())
-        for i in range(len(buildings)-1):
-            start, end, diffHeight, diffCnt = buildings[i][0], buildings[i+1][0], buildings[i][1][0], buildings[i][1][1]
+        res, segmentHeight, segmentCnt, d = [], 0, 0, sorted(d.items())
+        for i in range(len(d)-1):
+            start, end, diffHeight, diffCnt = d[i][0], d[i+1][0], d[i][1][0], d[i][1][1]
             segmentHeight += diffHeight
             segmentCnt += diffCnt
             if segmentCnt > 0:
