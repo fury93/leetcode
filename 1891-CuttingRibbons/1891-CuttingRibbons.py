@@ -8,10 +8,10 @@
             m = (l + r + 1) // 2
                 if k <= 0: return True
 
-        l, r = 0, max(ribbons)
+        l, r = 1, max(ribbons)
         #ribbons.sort(reverse=True)
-        #if sm < k: return 0
-        #sm = sum(ribbons)
+        if sm < k: return 0
+        sm = sum(ribbons)
 int:
     def maxLength(self, ribbons: List[int], k: int) -> 
 class Solution:
