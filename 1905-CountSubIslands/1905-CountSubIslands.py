@@ -1,28 +1,19 @@
-            return up and down and left and right
-
-        for r in range(rows):
-            for c in range(cols):
-                if grid1[r][c] == 1 and grid2[r][c] == 1 and dfs(r,c):
-                    count += 1
-        return count 
-
-    def countSubIslands(self, grid1: List[List[int]], grid2: List[List[int]]) -> int:
-
-            right = dfs(r, c + 1)
-            down = dfs(r + 1, c)
-            left = dfs(r, c - 1)
-
-            up = dfs(r - 1, c)
-                return False
-
-            grid2[r][c] = -1 #Doing this instead of using a visit set
-        def dfs(r, c):
-            if (r < 0 or r >= rows or c < 0 or c >= cols or grid2[r][c] <= 0):
-                return True
-            if grid1[r][c] == 0:
-        rows, cols =  len(grid1), len(grid1[0])
-        count = 0
-
 class Solution:
-    def countSubIslands2(self, grid1: List[List[int]], grid2: List[List[int]]) -> int:
+    def countSubIslands(self, grid1: List[List[int]], grid2: List[List[int]]) -> int:
+        res, R, C = 0, len(grid1), len(grid1[0])
+
+        def dfs(x, y):
+            isSubIsland = True
+            if 0 <= x < R and 0 <= y < C and grid2[x][y] == 1:
+                if grid1[x][y] != 1: return False
+                grid2[x][y] = -1
+                for dx, dy in [(0, 1), (1, 0), (-1, 0), (0, -1)]:
+                    isSubIsland &= dfs(x + dx, y + dy)
+            return isSubIsland
+
+        for x, y in itertools.product(range(R), range(C)):
+            if grid2[x][y] == 1:
+                res += dfs(x, y)
+
+        return res
 [
