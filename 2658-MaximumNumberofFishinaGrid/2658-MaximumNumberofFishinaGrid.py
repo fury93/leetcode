@@ -11,7 +11,7 @@ int:
                 if 0 <= xx < R and 0 <= yy < C and grid
 [xx][yy] > 0:
                     fish += getFish(xx, yy)
-
+            
             return fish
         
         res = 0
