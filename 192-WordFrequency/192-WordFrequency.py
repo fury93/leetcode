@@ -1,4 +1,5 @@
-# Read from the file words.txt and output the word frequency 
-list to stdout.
-cat words.txt | tr -s ' ' '\n' | sort | uniq -c | sort -r | 
-awk '{ print $2, $1 }'
+# Read from the file file.txt and output 
+all valid phone numbers to stdout.
+grep -e "^[0-9]\{3\}\-[0-9]\{3\}\-[0-9]\
+{4\}$" -e "^([0-9]\{3\}) [0-9]\{3\}\-
+[0-9]\{4\}$" file.txt
