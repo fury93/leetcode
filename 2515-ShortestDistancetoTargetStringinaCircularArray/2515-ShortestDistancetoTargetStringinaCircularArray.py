@@ -1,13 +1,6 @@
-[
 class Solution:
-    def closetTarget(self, words: List[str], 
-target: str, start: int) -> int:
-        ln = len(words)
-        for k in range(ln//2 + 1):
-            l, r = start - k, start + k
-            if words[l % ln] == target: return 
-abs(start - l)
-            if words[r % ln] == target: return 
-abs(r - start)
-        return -1
-5
+    def decrypt(self, code: List[int], k: int) -> List[int]:
+        if k < 0: return self.decrypt(code[::-1], -k)[::-1]
+        p = list(accumulate(code + code))
+        return [p[i+k] - p[i] for i in range(len(code))]
+[
