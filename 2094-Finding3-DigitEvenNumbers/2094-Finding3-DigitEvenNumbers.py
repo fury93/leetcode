@@ -3,7 +3,6 @@ class Solution:
         res, cnt1 = [], Counter(digits)
         for n in range(100, 999, 2):
             cnt2 = Counter(int(d) for d in str(n))
-            print(cnt1, cnt2)
             if cnt1 >= cnt2:
                 res.append(n)
         return res
