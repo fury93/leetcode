@@ -1,16 +1,18 @@
-                self.rank[rootX] += 1
 
-    def add(self, word):
-        self.root[word] = word
-        self.rank[word] = 1
+class UnionFind:
+            if w1 != w2 and not uf.connected(w1, w2):
+                return False
 
-    def connected(self, x, y):
-        if x not in self.root or y not in self.root:
+        return True
+            uf.union(w1, w2)
+        
+        for w1, w2 in zip(sentence1, sentence2):
+
+        uf = UnionFind()
+        uf.find('blabla')
+        for w1, w2 in similarPairs:
+    def areSentencesSimilarTwo(self, sentence1: List[str], sentence2: List[str], similarPairs: List[List[str]]) -> bool:
+        if len(sentence1) != len(sentence2):
             return False
-        return self.find(x) == self.find(y)
-                self.root[rootY] = rootX
-            elif self.rank[rootX] < self.rank[rootY]:
-                self.root[rootX] = rootY
-            else:
-                self.root[rootY] = rootX
+class Solution:
 [
