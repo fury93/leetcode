@@ -1,9 +1,8 @@
             res.append(''.join(nums[i:i+3]))
-        i += 3
-        if len(nums) - 1 == i:
+        if len(nums) - 4 == i:
             last = res[-1]
             res[-1] = last[:2]
-            res.append(last[2] + nums[i])
+            res.append(last[2] + nums[-1])
         
         for i in range(0, len(nums)-1, 3):
         res, i = [], 0
