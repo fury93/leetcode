@@ -6,7 +6,8 @@ class Solution:
             sm += cal
             res -= sm < lower
             res += sm > upper
-            if r - k < 0: continue
-            sm -= calories[r - k]
+            if l < 0: continue
+            sm -= calories[l]
+            l = r - k
         return res
 [
