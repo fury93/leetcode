@@ -1,4 +1,5 @@
 # Write your MySQL query statement below
-SELECT ABS((SELECT MAX(salary) as salary FROM Salaries WHERE department = "Engineering") 
-- (SELECT MAX(salary) as salary FROM Salaries WHERE department = "Marketing")) AS salary_difference 
+SELECT ROUND(SUM(order_occurrences*item_count) / SUM(order_occurrences), 2)
+       as average_items_per_order
+FROM Orders;
 [object Object]
