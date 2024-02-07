@@ -1,4 +1,3 @@
-
         for fromNode, toNode in enumerate(edges):
             score[toNode] += fromNode
 
@@ -8,4 +7,8 @@
         score = [0] * len(edges)
     def edgeScore(self, edges: List[int]) -> int:
 class Solution:
+                maxIndex = idx
+        return maxIndex
+        return score.index(max(score))
+
 [
