@@ -1,20 +1,10 @@
-            d[n] = f(n-1) + f(n-2)
-            return d[n]
-        
-        return f(n)
+class Solution:
+    def tribonacci(self, n: int) -> int:
+        if n < 3:
+        for _ in range(n-2):
+        return c
+             a, b, c = b, c, a + b + c
+            return 1 if n else 0
+        a, b, c = 0, 1, 1
 
-    def fib(self, n: int) -> int:
-        if n < 2: return n
-
-        return prev2
-
-        prev1, prev2 = 0, 1
-
-        for i in range(2, n+1):
-            cur = prev1 + prev2
-            prev1, prev2 = prev2, cur
-        
-        def f(n):
-            if n in d:
-                return d[n]
-2
+4
