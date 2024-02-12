@@ -1,13 +1,16 @@
-class·Solution:
-····def·countSubstrings(self,·S):
-········N·=·len(S)
-········ans·=·0
-········for·center·in·range(2*N·-·1):
-············left·=·center·//·2
-············right·=·left·+·center·%·2
-············while·left·>=·0·and·right·<·N·and·S[left]·==·S[right]:
-················ans·+=·1
-················left·-=·1
-················right·+=·1
-········return·ans
-"
+class Solution:
+    def deleteAndEarn(self, nums: List[int]) -> int:
+        if  not nums:
+            return 0
+
+        freq = [0] * (max(nums)+1)
+        for n in nums:
+            freq[n] += n
+
+        dp = [0] * len(freq)
+        dp[1] = freq[1]
+        for i in range(2, len(freq)):
+            dp[i] = max(freq[i] + dp[i-2], dp[i-1])
+
+[3,4,2]
+[2,2,3,3,3,4]
