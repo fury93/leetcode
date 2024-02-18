@@ -1,16 +1,19 @@
-class Solution:
-    def deleteAndEarn(self, nums: List[int]) -> int:
-        if  not nums:
-            return 0
+        booked, free, res = [], list(range(n)), [0] * n
+        meetings.sort()
+        for start, end in meetings:
+            while booked and booked[0][0] <= start:
+                _, room = heappop(booked)
+                heappush(free, room)
+            if free:
+                room = heappop(free)
+                heappush(booked, (end, room))
+            else:
+                release, room = heappop(booked)
+                heappush(booked, (release + (end - start), room))
+            res[room] += 1
+        return res.index(max(res))
+    def mostBooked(self, n: int, meetings: List[List[int]]) -> int:
 
-        freq = [0] * (max(nums)+1)
-        for n in nums:
-            freq[n] += n
+        return max(freq, key=freq.get)
 
-        dp = [0] * len(freq)
-        dp[1] = freq[1]
-        for i in range(2, len(freq)):
-            dp[i] = max(freq[i] + dp[i-2], dp[i-1])
-
-[3,4,2]
-[2,2,3,3,3,4]
+2
