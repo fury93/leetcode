@@ -1,6 +1,5 @@
         booked, free, res = [], list(range(n)), [0] * n
-        meetings.sort()
-        for start, end in meetings:
+        for start, end in sorted(meetings):
             while booked and booked[0][0] <= start:
                 _, room = heappop(booked)
                 heappush(free, room)
