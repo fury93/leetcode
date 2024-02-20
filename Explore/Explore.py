@@ -1,18 +1,17 @@
-        booked, free, res = [], list(range(n)), [0] * n
-        for start, end in sorted(meetings):
-            while booked and booked[0][0] <= start:
-                _, room = heappop(booked)
-                heappush(free, room)
-            if free:
-                room = heappop(free)
-                heappush(booked, (end, room))
-            else:
-                release, room = heappop(booked)
-                heappush(booked, (release + (end - start), room))
-            res[room] += 1
-        return res.index(max(res))
-    def mostBooked(self, n: int, meetings: List[List[int]]) -> int:
+            return memo[n]
+                points = max(n * d[n] + dp(n-2), dp(n-1))
+        def dp(n):
 
-        return max(freq, key=freq.get)
+    # Top-Down
+    def deleteAndEarn(self, nums: List[int]) -> int:
+        d = Counter(nums)
+        memo = {-1 : 0, 0 : 0}
+            if n not in memo:
+                memo[n] = points
 
-2
+        return dp(max(d.keys()))
+
+    # Bottom-up
+    def deleteAndEarn2(self, nums: List[int]) -> int:
+        if  not nums:
+[
