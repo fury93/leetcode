@@ -1,14 +1,9 @@
-············rightL·=·dfs(node.right)
-············leftL·=·dfs(node.left)
-········def·dfs(node):
-············if·not·node:·return·-1
-········maxL·=·0
-····def·diameterOfBinaryTree(self,·root:·Optional[TreeNode])·->·int:
-#·········self.right·=·right
-class·Solution:
-#·····def·__init__(self,·val=0,·left=None,·right=None):
-#·········self.val·=·val
-#·········self.left·=·left
-#·class·TreeNode:
-#·Definition·for·a·binary·tree·node.
+
+        
+
+
+# Your TwoSum object will be instantiated and called as such:
+# obj = TwoSum()
+# obj.add(number)
+# param_2 = obj.find(value)
 [
